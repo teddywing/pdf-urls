@@ -1,9 +1,11 @@
 extern crate lopdf;
 
+use std::path::Path;
+
 use lopdf::{Document, Object};
 
-pub fn get_urls_from_pdf() {
-    let doc = Document::load("example.pdf").unwrap();
+pub fn get_urls_from_pdf(path: &Path) {
+    let doc = Document::load(path).unwrap();
 
     for (_, obj) in doc.objects {
         match obj {

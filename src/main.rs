@@ -1,5 +1,8 @@
+use std::path::Path;
+
 use pdf_urls::get_urls_from_pdf;
 
 fn main() {
-    get_urls_from_pdf();
+    let path = Path::new("example.pdf");
+    get_urls_from_pdf(&path);
 }
