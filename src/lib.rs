@@ -13,7 +13,7 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<()> {
     let doc = Document::load(path)?;
 
     for (_, obj) in doc.objects {
-        return match obj {
+        match obj {
             Object::Dictionary(d) => {
                 for (k, v) in d.iter() {
                     let key = str::from_utf8(&k)?;
@@ -25,23 +25,18 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<()> {
                             let key = str::from_utf8(&k)?;
 
                             if key == "URI" {
-
-                                return match v {
+                                match v {
                                     Object::String(s, _) => {
                                         println!("{}", str::from_utf8(s)?);
-
-                                        Ok(())
                                     },
-                                    _ => Ok(()),
+                                    _ => (),
                                 }
                             }
                         }
                     }
                 }
-
-                Ok(())
             },
-            _ => Ok(()),
+            _ => (),
         }
     }
 
