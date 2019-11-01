@@ -5,7 +5,7 @@ use lopdf::{Document, Object};
 fn main() {
     let doc = Document::load("example.pdf").unwrap();
 
-    for (id, obj) in doc.objects {
+    for (_, obj) in doc.objects {
         match obj {
             Object::Dictionary(d) => {
                 for (k, v) in d.iter() {
