@@ -21,18 +21,19 @@ fn main() {
                     let key = ::std::str::from_utf8(&k).unwrap();
 
                     if key == "A" {
-                        dbg!(v);
+                        // dbg!(v);
 
                         for (k, v) in v.as_dict().unwrap() {
                             let key = ::std::str::from_utf8(&k).unwrap();
 
                             // dbg!(key, v);
                             if key == "URI" {
-                                dbg!(v);
+                                // dbg!(v);
 
                                 match v {
                                     Object::String(s, _) => {
-                                        dbg!(::std::str::from_utf8(s).unwrap());
+                                        // dbg!(::std::str::from_utf8(s).unwrap());
+                                        println!("{}", ::std::str::from_utf8(s).unwrap());
 
                                         ()
                                     },
