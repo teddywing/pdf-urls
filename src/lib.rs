@@ -4,7 +4,7 @@ use std::path::Path;
 
 use lopdf::{Document, Object};
 
-pub fn get_urls_from_pdf(path: &Path) {
+pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) {
     let doc = Document::load(path).unwrap();
 
     for (_, obj) in doc.objects {
