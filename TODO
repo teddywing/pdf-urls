@@ -1,0 +1,24 @@
+TODO
+
+2019.11.01
+v Remove `unwrap`s, return a `Result`
+v Set up errors
+v Add a test
+v Make a test PDF
+v Take the PDF path as an argument
+v Documentation
+- Figure out what's wrong with parsing certain PDFs
+
+
+
+523170630fd8e9ba695f4167d132a8812d814a1e
+$ ./target/debug/pdf-urls ./Resources/PDF32000_2008.pdf
+error: utf8 error: invalid utf-8 sequence of 1 bytes from index 0
+
+Changed URL conversion to `String::from_utf8_lossy(s)`
+$ time ./target/debug/pdf-urls ./Resources/PDF32000_2008.pdf
+error: pdf error: An object does not have the expected type
+
+real	2m19.471s
+user	8m44.137s
+sys	0m3.798s
