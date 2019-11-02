@@ -28,6 +28,7 @@ fn print_usage() {
     println!(r#"usage: pdf-urls [<options>] FILE
 
 Options:
+    -h, --help          print this help menu
     -v, --version       print the program version"#);
 }
 
@@ -38,6 +39,12 @@ fn main() {
         print_usage();
 
         process::exit(exitcode::USAGE);
+    }
+
+    if args[1] == "-h" || args[1] == "--help" {
+        print_usage();
+
+        process::exit(exitcode::OK);
     }
 
     if args[1] == "-v" || args[1] == "--version" {

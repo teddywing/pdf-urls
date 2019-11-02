@@ -16,6 +16,9 @@ standard output.
 
 OPTIONS
 -------
+-h, --help::
+	Print usage help.
+
 -v, --version::
 	Print the program version.
 
