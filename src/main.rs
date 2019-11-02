@@ -22,8 +22,13 @@ use std::process;
 
 use pdf_urls::get_urls_from_pdf;
 
+const VERSION: &'static str = "0.0.1";
+
 fn print_usage() {
-    println!("usage: pdf-urls FILE");
+    println!(r#"usage: pdf-urls [<options>] FILE
+
+Options:
+    -v, --version       print the program version"#);
 }
 
 fn main() {
@@ -33,6 +38,12 @@ fn main() {
         print_usage();
 
         process::exit(exitcode::USAGE);
+    }
+
+    if args[1] == "-v" || args[1] == "--version" {
+        println!("{}", VERSION);
+
+        process::exit(exitcode::OK);
     }
 
     match get_urls_from_pdf(&args[1]) {
