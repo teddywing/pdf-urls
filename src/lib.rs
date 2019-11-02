@@ -46,3 +46,22 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<Vec<String>> {
 
     Ok(urls)
 }
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn get_urls_from_pdf_extracts_urls_from_pdf() {
+        let expected = vec![
+            "http://www.gutenberg.org/ebooks/11",
+            "https://ia800908.us.archive.org/6/items/alicesadventures19033gut/19033-h/images/i002.jpg",
+            "https://science.nasa.gov/news-article/black-hole-image-makes-history",
+        ];
+
+        let urls = get_urls_from_pdf("testdata/Alice's Adventures in Wonderland.pdf");
+
+        assert_eq!(expected, urls.unwrap());
+    }
+}
