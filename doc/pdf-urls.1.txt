@@ -1,0 +1,22 @@
+pdf-urls(1)
+===========
+
+NAME
+----
+pdf-urls - Extract URLs from a PDF file
+
+SYNOPSIS
+--------
+*pdf-urls* 'FILE'
+
+DESCRIPTION
+-----------
+Extract all URLs from a PDF file and print them, one per line, to
+standard output.
+
+EXAMPLES
+--------
+The following extracts URLs from the document 'file.pdf' and passes them
+to *urlview* to be opened in a browser:
+
+	pdf-urls file.pdf | urlview

@@ -1,0 +1,50 @@
+'\" t
+.\"     Title: pdf-urls
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 11/02/2019
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "PDF\-URLS" "1" "11/02/2019" "\ \&" "\ \&"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+pdf-urls \- Extract URLs from a PDF file
+.SH "SYNOPSIS"
+.sp
+\fBpdf\-urls\fR \fIFILE\fR
+.SH "DESCRIPTION"
+.sp
+Extract all URLs from a PDF file and print them, one per line, to standard output\&.
+.SH "EXAMPLES"
+.sp
+The following extracts URLs from the document \fIfile\&.pdf\fR and passes them to \fBurlview\fR to be opened in a browser:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+pdf\-urls file\&.pdf | urlview
+.fi
+.if n \{\
+.RE
+.\}
