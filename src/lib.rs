@@ -23,7 +23,7 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<Vec<String>> {
                 for (k, v) in d.iter() {
                     let key = str::from_utf8(&k)?;
 
-                    if key == "A" {
+                    if object_is_link_annotation(key) {
                         let url_objects = v.as_dict()?;
 
                         for (k, v) in url_objects {
@@ -48,6 +48,11 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<Vec<String>> {
     urls.dedup();
 
     Ok(urls)
+}
+
+/// Returns true if the given PDF object key is a link annotation.
+fn object_is_link_annotation(key: &str) -> bool {
+    key == "A"
 }
 
 
