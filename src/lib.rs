@@ -62,8 +62,11 @@ mod tests {
             "https://science.nasa.gov/news-article/black-hole-image-makes-history",
         ];
 
-        let urls = get_urls_from_pdf("testdata/Alice's Adventures in Wonderland.pdf");
+        let urls = get_urls_from_pdf("testdata/Alice's Adventures in Wonderland.pdf").unwrap();
 
-        assert_eq!(expected, urls.unwrap());
+        // Allow URLs to be out of order.
+        for url in expected {
+            assert!(urls.contains(&url.to_owned()));
+        }
     }
 }
