@@ -44,6 +44,8 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<Vec<String>> {
         }
     }
 
+    urls.dedup();
+
     Ok(urls)
 }
 
