@@ -1,3 +1,20 @@
+// Copyright (c) 2019  Teddy Wing
+//
+// This file is part of PDF-URLs.
+//
+// PDF-URLs is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// PDF-URLs is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with PDF-URLs. If not, see <https://www.gnu.org/licenses/>.
+
 mod errors;
 
 extern crate lopdf;
@@ -32,7 +49,7 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<Vec<String>> {
                             if key == "URI" {
                                 match v {
                                     Object::String(s, _) => {
-                                        urls.push(String::from_utf8(s.to_vec())?);
+                                        urls.push(String::from_utf8_lossy(s).to_string());
                                     },
                                     _ => (),
                                 }
