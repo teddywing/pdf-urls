@@ -4,13 +4,17 @@ extern crate lopdf;
 
 use std::path::Path;
 use std::str;
+use std::string::String;
+use std::vec::Vec;
 
 use lopdf::{Document, Object};
 
 use errors::Result;
 
-pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<()> {
+pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<Vec<String>> {
     let doc = Document::load(path)?;
+
+    let mut urls = Vec::new();
 
     for (_, obj) in doc.objects {
         match obj {
@@ -27,7 +31,7 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<()> {
                             if key == "URI" {
                                 match v {
                                     Object::String(s, _) => {
-                                        println!("{}", str::from_utf8(s)?);
+                                        urls.push(String::from_utf8(s.to_vec())?);
                                     },
                                     _ => (),
                                 }
@@ -40,5 +44,5 @@ pub fn get_urls_from_pdf<P: AsRef<Path>>(path: P) -> Result<()> {
         }
     }
 
-    Ok(())
+    Ok(urls)
 }
