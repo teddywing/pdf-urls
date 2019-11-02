@@ -22,3 +22,9 @@ error: pdf error: An object does not have the expected type
 real	2m19.471s
 user	8m44.137s
 sys	0m3.798s
+
+
+2019.11.02:
+v README
+v Man page
+v Version CLI option
