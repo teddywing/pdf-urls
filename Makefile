@@ -1,5 +1,5 @@
 VERSION := $(shell fgrep 'const VERSION' src/main.rs | awk -F '"' '{ print $$2 }')
-TOOLCHAIN := $(shell fgrep default_host_triple ~/.rustup/settings.toml | awk -F '"' '{ print $$2 }')
+TOOLCHAIN := $(shell fgrep default_host_triple $(HOME)/.rustup/settings.toml | awk -F '"' '{ print $$2 }')
 
 RELEASE_PRODUCT := target/release/pdf-urls
 
